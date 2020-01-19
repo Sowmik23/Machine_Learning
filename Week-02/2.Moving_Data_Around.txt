@@ -1,0 +1,295 @@
+
+>> A = [1,2;3,4;5,6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> A
+A =
+
+   1   2
+   3   4
+   5   6
+
+>>
+>>
+>> size(A)
+ans =
+
+   3   2
+
+>> sz = size(A)
+sz =
+
+   3   2
+
+>> size(sz)
+ans =
+
+   1   2
+
+>> size(A,1)
+ans =  3
+>>
+>> size(A,2)
+ans =  2
+
+>> v = [1 2 3 4]
+v =
+
+   1   2   3   4
+
+>> length(v)
+ans =  4
+>> length(A)
+ans =  3
+>> length([1;2;3;4;5])
+ans =  5
+>>
+>>
+>> pwd
+ans = /home/sowmik
+>> pwd %current directory/path
+ans = /home/sowmik
+>> ls
+
+
+>> cd 'Machine_Learning/'
+>> ls
+Moving_Data_Around.txt       _974fa7509d583eabb592839f9716fe25_Lecture1.pdf  featuresY.dat
+Octave_basic_operations.txt  featuresX.dat
+>>
+>> load featuresX.dat
+>> load feat
+feather        featuresX      featuresX.dat  featuresY.dat
+>> load featuresY.dat
+>>
+>> load('featuresX.dat')
+>>
+>> who
+Variables in the current scope:
+
+A          ans        featuresX  featuresY  sz         v
+
+>>
+>> featuresX
+featuresX =
+
+   4324      4
+   4324      6
+   5654      4
+   5465      9
+   4545      6
+   4563      7
+   4545      9
+   1324      2
+   4452      2
+   3445      4
+
+>> featuresY
+featuresY =
+
+   3456
+   1243
+   1234
+   9867
+   7090
+   8907
+   5679
+   6573
+   3467
+   7653
+
+>> size(featuresX)
+ans =
+
+   10    2
+
+>> size(featuresY)
+ans =
+
+   10    1
+
+>>
+>>
+>> whos
+Variables in the current scope:
+
+   Attr Name           Size                     Bytes  Class
+   ==== ====           ====                     =====  =====
+        A              3x2                         48  double
+        ans            1x2                         16  double
+        featuresX     10x2                        160  double
+        featuresY     10x1                         80  double
+        sz             1x2                         16  double
+        v              1x4                         32  double
+
+Total is 44 elements using 352 bytes
+
+>>
+>> clear featuresX
+>> whos
+Variables in the current scope:
+
+   Attr Name           Size                     Bytes  Class
+   ==== ====           ====                     =====  =====
+        A              3x2                         48  double
+        ans            1x2                         16  double
+        featuresY     10x1                         80  double
+        sz             1x2                         16  double
+        v              1x4                         32  double
+
+Total is 24 elements using 192 bytes
+
+>>
+>> v = featuresY(1:5)
+v =
+
+   3456
+   1243
+   1234
+   9867
+   7090
+
+>> whos
+Variables in the current scope:
+
+   Attr Name           Size                     Bytes  Class
+   ==== ====           ====                     =====  =====
+        A              3x2                         48  double
+        ans            1x2                         16  double
+        featuresY     10x1                         80  double
+        sz             1x2                         16  double
+        v              5x1                         40  double
+
+Total is 25 elements using 200 bytes
+
+>>
+>>
+>>
+>> save hello.mat v;
+
+>> clear
+>> whos
+>> who
+>> load hello.mat
+>> whos
+Variables in the current scope:
+
+   Attr Name        Size                     Bytes  Class
+   ==== ====        ====                     =====  =====
+        v           5x1                         40  double
+
+Total is 5 elements using 40 bytes
+
+>>
+>> save hello.txt v -ascii   %save as text (ASCII)
+>>
+>>
+>> A = [1,2;3,4;5,6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> A(3,2)
+ans =  6
+>> A(2,:) % ":" means every element along that row/column
+ans =
+
+   3   4
+
+>> A(:,2)
+ans =
+
+   2
+   4
+   6
+
+>> A([1 3], :)
+ans =
+
+   1   2
+   5   6
+
+>>
+>>
+>> A(:,2) = [10;11;12]
+A =
+
+    1   10
+    3   11
+    5   12
+
+>> A = [A,[100, 101, 102]] %append another column vector to right
+error: horizontal dimensions mismatch (3x2 vs 1x3)
+>> A = [A,[100; 101; 102]] %append another column vector to right
+A =
+
+     1    10   100
+     3    11   101
+     5    12   102
+
+>> size(A)
+ans =
+
+   3   3
+
+>>
+>> A(:) %put all elements of A into a single vector
+ans =
+
+     1
+     3
+     5
+    10
+    11
+    12
+   100
+   101
+   102
+
+>>
+>>
+>>
+>> A = [1 2; 3 4; 5 6];
+>> B = [11 12;13 14;15 16]
+B =
+
+   11   12
+   13   14
+   15   16
+
+>> c = [A B]
+c =
+
+    1    2   11   12
+    3    4   13   14
+    5    6   15   16
+
+>> c = [A;B]
+c =
+
+    1    2
+    3    4
+    5    6
+   11   12
+   13   14
+   15   16
+
+>> size(c)
+ans =
+
+   6   2
+
+>> [A,B]
+ans =
+
+    1    2   11   12
+    3    4   13   14
+    5    6   15   16
+
+>>

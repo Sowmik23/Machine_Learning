@@ -1,0 +1,456 @@
+Read https://www.octave.org/bugs.html to learn how to submit bug reports.
+For information about changes from previous versions, type 'news'.
+
+>> 5+6
+ans =  11
+>> 3-2
+ans =  1
+>> 5*8
+ans =  40
+>> 1/2
+ans =  0.50000
+>> 2^6
+ans =  64
+>>
+>>
+>> 1 == 2 %false
+ans = 0
+>> 1~=2 %false
+ans = 1
+>> 1~=2 %true
+ans = 1
+>> 1 && 0 %AND
+ans = 0
+>> 1 || 0 %OR
+ans = 1
+>> xor(1,0)
+ans = 1
+>>
+>>
+>>
+>> PS('>>')
+error: 'PS' undefined near line 1 column 1
+>> PS1('>> ')
+>> a = 3
+a =  3
+>> a = 3;
+>> a = 3;  %semicolon supressing output
+>> b = 'hi';
+>> c = (3>=1);
+>> c
+c = 1
+>>
+>>
+>>
+>>
+>> a = pi;
+>> a
+a =  3.1416
+>> disp(a);
+ 3.1416
+>>
+>> disp(sprintf('2 decimals: %0.2f',a))
+2 decimals: 3.14
+>>
+>>
+>>
+>> disp(sprintf('6 decimals: %0.6f',a))
+6 decimals: 3.141593
+>>
+>>
+>>
+>> format long
+>> a
+a =  3.141592653589793
+>>
+>> format short
+>> a
+a =  3.1416
+>>
+>>
+>>
+>> %vector and metrices
+>>
+>>
+>> A = [1,2; 3,4; 5,6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>>
+>> A =[1,2;
+>3,4;
+parse error:
+
+  syntax error
+
+>>> >3,4;
+    ^
+
+>> A =[1,2;
+3,4;
+5,6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>>
+>>
+>> v = [1,2,3]
+v =
+
+   1   2   3
+
+>> v = [1;2;3]
+v =
+
+   1
+   2
+   3
+
+>>
+>>
+>> v = [1:0.5:2]
+v =
+
+   1.0000   1.5000   2.0000
+
+>>
+>>
+>> v = [1:0.1:2]
+v =
+
+   1.0000   1.1000   1.2000   1.3000   1.4000   1.5000   1.6000   1.7000   1.8000   1.9000   2.0000
+
+>>
+>>
+>>
+>>
+>>
+>> v = [1:6]
+v =
+
+   1   2   3   4   5   6
+
+>>
+>> ones(2,3)
+ans =
+
+   1   1   1
+   1   1   1
+
+>>
+>>
+>> c = 2*ones(2,3)
+c =
+
+   2   2   2
+   2   2   2
+
+>> c = ([2 2 2;2 2 2]
+c
+parse error:
+
+  syntax error
+
+>>> c
+    ^
+
+>> w = ones(1,3)
+w =
+
+   1   1   1
+
+>>
+>> w = zeros(1,3)
+w =
+
+   0   0   0
+
+>> w = rand(1,3)
+w =
+
+   0.88081   0.83224   0.85669
+
+>> rand(3,3)
+ans =
+
+   0.72304   0.75735   0.48141
+   0.67554   0.42847   0.81400
+   0.66539   0.59570   0.99119
+
+>>
+>> rand(3,3)
+ans =
+
+   0.108007   0.862470   0.820058
+   0.087564   0.245058   0.755389
+   0.636678   0.377468   0.296955
+
+>>
+>> w = randn(1,3)
+w =
+
+  -0.83961  -0.83470  -0.34606
+
+>> w = -6 + sqrt(10)*(randn(1,1000))
+
+
+//these two command can't execute in my octave
+hist(w)
+hist(w,50)
+
+>> eye(4)
+ans =
+
+Diagonal Matrix
+
+   1   0   0   0
+   0   1   0   0
+   0   0   1   0
+   0   0   0   1
+
+>> I = eye(6)
+I =
+
+Diagonal Matrix
+
+   1   0   0   0   0   0
+   0   1   0   0   0   0
+   0   0   1   0   0   0
+   0   0   0   1   0   0
+   0   0   0   0   1   0
+   0   0   0   0   0   1
+
+>> help eye
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LC_ADDRESS = "bn_BD",
+        LC_NAME = "bn_BD",
+        LC_MONETARY = "bn_BD",
+        LC_PAPER = "bn_BD",
+        LC_IDENTIFICATION = "bn_BD",
+        LC_TELEPHONE = "bn_BD",
+        LC_MEASUREMENT = "bn_BD",
+        LC_TIME = "C",
+        LC_NUMERIC = "C",
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
+'eye' is a built-in function from the file libinterp/corefcn/data.cc
+
+ -- eye (N)
+ -- eye (M, N)
+ -- eye ([M N])
+ -- eye (..., CLASS)
+     Return an identity matrix.
+
+     If invoked with a single scalar argument N, return a square NxN
+     identity matrix.
+
+     If supplied two scalar arguments (M, N), 'eye' takes them to be the
+     number of rows and columns.  If given a vector with two elements,
+     'eye' uses the values of the elements as the number of rows and
+     columns, respectively.  For example:
+
+          eye (3)
+           =>  1  0  0
+               0  1  0
+               0  0  1
+
+     The following expressions all produce the same result:
+
+          eye (2)
+          ==
+          eye (2, 2)
+          ==
+          eye (size ([1, 2; 3, 4]))
+
+     The optional argument CLASS, allows 'eye' to return an array of the
+     specified type, like
+
+          val = zeros (n,m, "uint8")
+
+     Calling 'eye' with no arguments is equivalent to calling it with an
+     argument of 1.  Any negative dimensions are treated as zero.  These
+     odd definitions are for compatibility with MATLAB.
+
+     See also: speye, ones, zeros.
+
+Additional help for built-in functions and operators is
+available in the online version of the manual.  Use the command
+'doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at https://www.octave.org and via the help@octave.org
+mailing list.
+>> help rand
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LC_ADDRESS = "bn_BD",
+        LC_NAME = "bn_BD",
+        LC_MONETARY = "bn_BD",
+        LC_PAPER = "bn_BD",
+        LC_IDENTIFICATION = "bn_BD",
+        LC_TELEPHONE = "bn_BD",
+        LC_MEASUREMENT = "bn_BD",
+        LC_TIME = "C",
+        LC_NUMERIC = "C",
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
+'rand' is a built-in function from the file libinterp/corefcn/rand.cc
+
+ -- rand (N)
+ -- rand (M, N, ...)
+ -- rand ([M N ...])
+ -- V = rand ("state")
+ -- rand ("state", V)
+ -- rand ("state", "reset")
+ -- V = rand ("seed")
+ -- rand ("seed", V)
+ -- rand ("seed", "reset")
+ -- rand (..., "single")
+ -- rand (..., "double")
+     Return a matrix with random elements uniformly distributed on the
+     interval (0, 1).
+
+     The arguments are handled the same as the arguments for 'eye'.
+
+     You can query the state of the random number generator using the
+     form
+
+          v = rand ("state")
+
+     This returns a column vector V of length 625.  Later, you can
+     restore the random number generator to the state V using the form
+
+          rand ("state", v)
+
+     You may also initialize the state vector from an arbitrary vector
+     of length <= 625 for V.  This new state will be a hash based on the
+     value of V, not V itself.
+
+     By default, the generator is initialized from '/dev/urandom' if it
+     is available, otherwise from CPU time, wall clock time, and the
+     current fraction of a second.  Note that this differs from MATLAB,
+     which always initializes the state to the same state at startup.
+     To obtain behavior comparable to MATLAB, initialize with a
+     deterministic state vector in Octave's startup files (*note Startup
+     Files::).
+
+     To compute the pseudo-random sequence, 'rand' uses the Mersenne
+     Twister with a period of 2^{19937}-1 (See M. Matsumoto and T.
+     Nishimura, 'Mersenne Twister: A 623-dimensionally equidistributed
+     uniform pseudorandom number generator', ACM Trans.  on Modeling and
+     Computer Simulation Vol.  8, No.  1, pp.  3-30, January 1998,
+     <http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html>).  Do
+     *not* use for cryptography without securely hashing several
+     returned values together, otherwise the generator state can be
+     learned after reading 624 consecutive values.
+
+     Older versions of Octave used a different random number generator.
+     The new generator is used by default as it is significantly faster
+     than the old generator, and produces random numbers with a
+     significantly longer cycle time.  However, in some circumstances it
+     might be desirable to obtain the same random sequences as produced
+     by the old generators.  To do this the keyword "seed" is used to
+     specify that the old generators should be used, as in
+
+          rand ("seed", val)
+
+     which sets the seed of the generator to VAL.  The seed of the
+     generator can be queried with
+
+          s = rand ("seed")
+
+     However, it should be noted that querying the seed will not cause
+     'rand' to use the old generators, only setting the seed will.  To
+     cause 'rand' to once again use the new generators, the keyword
+     "state" should be used to reset the state of the 'rand'.
+
+     The state or seed of the generator can be reset to a new random
+     value using the "reset" keyword.
+
+     The class of the value returned can be controlled by a trailing
+     "double" or "single" argument.  These are the only valid classes.
+
+     See also: randn, rande, randg, randp.
+
+Additional help for built-in functions and operators is
+available in the online version of the manual.  Use the command
+'doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at https://www.octave.org and via the help@octave.org
+mailing list.
+>> help help
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LC_ADDRESS = "bn_BD",
+        LC_NAME = "bn_BD",
+        LC_MONETARY = "bn_BD",
+        LC_PAPER = "bn_BD",
+        LC_IDENTIFICATION = "bn_BD",
+        LC_TELEPHONE = "bn_BD",
+        LC_MEASUREMENT = "bn_BD",
+        LC_TIME = "C",
+        LC_NUMERIC = "C",
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
+'help' is a function from the file /app/share/octave/5.1.0/m/help/help.m
+
+ -- help NAME
+ -- help --list
+ -- help .
+ -- help
+     Display the help text for NAME.
+
+     For example, the command 'help help' prints a short message
+     describing the 'help' command.
+
+     Given the single argument '--list', list all operators, keywords,
+     built-in functions, and loadable functions available in the current
+     session of Octave.
+
+     Given the single argument '.', list all operators available in the
+     current session of Octave.
+
+     If invoked without any arguments, 'help' displays instructions on
+     how to access help from the command line.
+
+     The help command can provide information about most operators, but
+     NAME must be enclosed by single or double quotes to prevent the
+     Octave interpreter from acting on NAME.  For example, 'help "+"'
+     displays help on the addition operator.
+
+     See also: doc, lookfor, which, info.
+
+Additional help for built-in functions and operators is
+available in the online version of the manual.  Use the command
+'doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at https://www.octave.org and via the help@octave.org
+mailing list.
+
+
+
+
+
+
+
+
+
+
